@@ -7,7 +7,7 @@ Sends a slack notification if you missed an OVH Voip call.
 docker build -t medreda/slak_ovh_telecom_notifier .  
 ```
 ```
-docker run --env-file ./.env  medreda/slak_ovh_notifier   
+docker run --rm --env-file ./.env  medreda/slak_ovh_notifier  
 ```
 ## Configuration needed
 
