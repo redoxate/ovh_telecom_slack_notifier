@@ -4,7 +4,7 @@ from slack_sdk.errors import SlackApiError
 
 class SlackApi:
     def __init__(self):
-        self.client = WebClient(token=os.environ['OVH_ENDPOINT'])
+        self.client = WebClient(token=os.environ['SLACK_OAUTH_TOKEN'])
 
     def send_slack_msg(self, msg, in_channel='#notifications'):
         try:

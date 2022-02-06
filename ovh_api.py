@@ -27,12 +27,12 @@ class OvhApi:
         latestInteractions = []
         for call in reversed(calls):
             # If this is the latest call from the 'calling' person
-            if not next((c for c in latestInteractions if c["calling"] == call["calling"]), False) and call["called"] == self.serviceName:
+            if not next((c for c in latestInteractions if call["calling"] in (c["calling"], c["called"])), False):
                 latestInteractions.append(call)
         
         missedPhoneCalls = []
         for call in latestInteractions:
-            if call["wayType"] == "transfer" or call["hangupNature"] == "missed":
+            if (call["wayType"] == "transfer" or call["hangupNature"] == "missed") and call["called"] == self.serviceName:
                 missedPhoneCalls.append(call)
         
         return missedPhoneCalls
